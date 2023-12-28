@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E0FFFF;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('Screenshot 2023-12-26 140548.png');
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .rating-container {
+            margin-top: 20px;
+        }
+
+        .stars {
+            display: inline-block;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .stars:hover {
+            color: #ffcc00;
+        }
+
+        .stars.active {
+            color: #ffcc00;
+        }
+
+        #userRating {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        #reviewText {
+            margin-top: 20px;
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #submitBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const stars = document.querySelectorAll('.stars');
+            const userRating = document.getElementById('userRating');
+            const reviewText = document.getElementById('reviewText');
+            const submitBtn = document.getElementById('submitBtn');
+
+            let rating = 0;
+
+            stars.forEach(star => {
+                star.addEventListener('mouseover', function () {
+                    highlightStars(this.getAttribute('data-index'));
+                });
+
+                star.addEventListener('mouseout', function () {
+                    highlightStars(rating);
+                });
+
+                star.addEventListener('click', function () {
+                    rating = this.getAttribute('data-index');
+                    userRating.innerHTML = `You rated: ${rating} stars`;
+                });
+            });
+
+            submitBtn.addEventListener('click', function () {
+                const review = reviewText.value.trim();
+
+                if (rating > 0 && review !== "") {
+                    alert(`Thank you for rating ${rating} stars!\nReview: ${review}`);
+                } else {
+                    alert("Please provide both a rating and a review before submitting.");
+                }
+            });
+
+            function highlightStars(index) {
+                stars.forEach((star, i) => {
+                    if (i < index) {
+                        star.classList.add('active');
+                    } else {
+                        star.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>WRITE A REVIEW</h1>
+
+    <div class="rating-container">
+        <span class="stars" data-index="1">&#9733;</span>
+        <span class="stars" data-index="2">&#9733;</span>
+        <span class="stars" data-index="3">&#9733;</span>
+        <span class="stars" data-index="4">&#9733;</span>
+        <span class="stars" data-index="5">&#9733;</span>
+    </div>
+
+    <div id="userRating"></div>
+
+    <textarea id="reviewText" placeholder="Write your review here"></textarea>
+
+    <button id="submitBtn">Submit Review</button>
+</body>
+</html>

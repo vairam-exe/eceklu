@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagamalai Pudukottai Electricians</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #E0FFFF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('evstationphoto.png');
+        }
+
+        h1, h3 {
+            text-align: center;
+            color: #000000;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto; /* Added margin for better spacing */
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #3498db; /* Blue button color */
+            color: #fff; /* White text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        button:hover {
+            background-color: #2c3e50; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>MADURAI</h1>
+    <h3>EV STATION DETAILS</h3>
+    <div>
+        <table border="2px">
+            <tr>
+                <th>STATION NAME</th>
+                <th>ADDRESS</th>
+                
+            </tr>
+            <tr>
+                <td>Zeon Charging - JC Residency Charging Station</td>
+                <td>14, Lady Doak College Rd, Chinna Chokikulam</td>
+                
+            </tr>
+            <tr>
+                <td>Tata Power - TML Chima Cars Kappalur Charging Station</td>
+                <td>H-14, H-14A, SIDCO INDUSTRIAL ESTATE UCCHAPATTI, Kappalur</td>
+               
+            </tr>
+            <tr>
+                <td>Tata Power - Taj The Gateway Hotel Pasumalai Entry Side (Private - Charger)</td>
+                <td>The Gateway Hotel Pasumalai Madurai, No: 40, Tpk Road, Pasumalai</td>
+                
+            </tr>
+            
+        </table>
+    </div>
+    
+    <!-- Go Back Button -->
+    <button onclick="goBack()">Go Back to Home Page</button>
+
+    <script>
+        function goBack() {
+            window.location.href = "project.html"; // Change to the actual home page URL
+        }
+    </script>
+</body>
+</html>

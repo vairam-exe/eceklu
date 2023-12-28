@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanics Finder</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f5f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #0086b3;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 24px;
+    }
+
+    #map-container {
+      position: relative;
+      height: 400px;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    #map {
+      height: 100%;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    #mechanics-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 10px;
+    }
+
+    .mechanic-card {
+      flex: 1 1 300px;
+      margin: 10px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #fff;
+      transition: transform 0.3s ease-in-out;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .mechanic-card:hover {
+      transform: scale(1.05);
+    }
+
+    #return-home {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #0086b3;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    #return-home:hover {
+      background-color: #00546c;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mechanic Finder</h1>
+  </header>
+
+  <div id="map-container">
+    <div id="map"></div>
+  </div>
+
+  <div id="mechanics-list">
+    <div class="mechanic-card" data-lat="9.9194" data-lng="78.1198">
+      <h2>Madurai Auto Works</h2>
+      <p>123 Main St, Madurai</p>
+      <p>Mobile: 555-1234</p>
+      <p>Phone: 0452-XXXXXXX</p>
+    </div>
+    <!-- Add more mechanic cards here -->
+    <div class="mechanic-card" data-lat="9.9334" data-lng="78.1190">
+      <h2>Sri Motors</h2>
+      <p>456 Oak St, Madurai</p>
+      <p>Mobile: 555-5678</p>
+      <p>Phone: 0452-XXXXXXX</p>
+    </div>
+    <!-- Add more mechanic cards here -->
+  </div>
+
+  <a href="#" id="return-home">Return to Home Page</a>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    function initMap() {
+      const map = L.map('map').setView([9.9194, 78.1198], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      document.querySelectorAll('.mechanic-card').forEach(function(card) {
+        const lat = card.dataset.lat;
+        const lng = card.dataset.lng;
+        const name = card.querySelector('h2').textContent;
+        const address = card.querySelectorAll('p')[0].textContent;
+        const mobile = card.querySelectorAll('p')[1].textContent;
+        const phone = card.querySelectorAll('p')[2].textContent;
+
+        // Add marker for each mechanic
+        L.marker([lat, lng]).addTo(map)
+          .bindPopup(`<b>${name}</b><br>${address}<br>Mobile: ${mobile}<br>Phone: ${phone}`).openPopup();
+      });
+
+      document.getElementById('return-home').addEventListener('click', function() {
+        window.location.href = "index.html"; // Replace with the actual home page URL
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initMap);
+  </script>
+
+</body>
+</html>

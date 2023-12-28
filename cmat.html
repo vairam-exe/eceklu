@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Review Page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 30px;
+		}
+		.rating {
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 30px;
+		}
+		.rating > input {
+			display: none;
+		}
+		.rating > label {
+			cursor: pointer;
+			font-size: 40px;
+			color: #ccc;
+			margin: 0 10px;
+		}
+		.rating > label:hover,
+		.rating > label:hover ~ label,
+		.rating > input:checked ~ label {
+			color: #ffc107;
+		}
+		.review-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 20px;
+		}
+		.review-form textarea {
+			width: 100%;
+			height: 100px;
+			resize: none;
+			margin-top: 10px;
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+			font-family: Arial, sans-serif;
+		}
+		.review-form button {
+			margin-top: 10px;
+			padding: 10px 20px;
+			border-radius: 5px;
+			border: none;
+			background-color: #ffc107;
+			color: #fff;
+			font-size: 16px;
+			font-family: Arial, sans-serif;
+			cursor: pointer;
+		}
+		.review-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		.review {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			width: 80%;
+			margin-bottom: 30px;
+		}
+		.review .rating {
+			margin-bottom: 10px;
+		}
+		.review .review-text {
+			font-size: 16px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+		.review .reviewer {
+			font-size: 14px;
+			color: #666;
+		}
+	</style>
+</head>
+<body>
+	<h1>Review Page</h1>
+	<div class="rating">
+		<input type="radio" name="rating" id="star5" value="5">
+		<label for="star5">★</label>
+		<input type="radio" name="rating" id="star4" value="4">
+		<label for="star4">★</label>
+		<input type="radio" name="rating" id="star3" value="3">
+		<label for="star3">★</label>
+		<input type="radio" name="rating" id="star2" value="2">
+		<label for="star2">★</label>
+		<input type="radio" name="rating" id="star1" value="1">
+		<label for="star1">★</label>
+	</div>
+	<div class="review-form">
+		<textarea placeholder="Write your review here..."></textarea>
+		<button>Submit</button>
+	</div>
+	<div class="review-container">
+		<div class="review">
+			<div class="rating">
+				<label for="star5">★</label>
+				<label for="star4">★</label>
+				<label for="star3">★</label>
+				<label for="star2">★</label>
+				<label for="star1">★</label>
+			</div>
+			<div class="review-text">
